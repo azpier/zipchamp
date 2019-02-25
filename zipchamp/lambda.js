@@ -21,7 +21,7 @@ exports.handler = function (event, context, callback) {
 
     console.log(`Fetching ${event.path}`);
     s3.getObject({
-        'Bucket': "hosted-archives",
+        'Bucket': "nuxt-on-lambda-dev-serverlessdeploymentbucket-10opf1li6eb4o",
         'Key': event.path
     }).promise()
         .then(data => {
@@ -50,7 +50,7 @@ exports.handler = function (event, context, callback) {
                         console.log(`Uploading to ${event.path}`);
                         s3.putObject({
                             "Body": fs.createReadStream(tmpPath),
-                            "Bucket": "hosted-archives",
+                            "Bucket": "nuxt-on-lambda-dev-serverlessdeploymentbucket-10opf1li6eb4o",
                             "Key": event.path,
                             "Metadata": {
                                 "Content-Length": String(fs.statSync(tmpPath).size)
